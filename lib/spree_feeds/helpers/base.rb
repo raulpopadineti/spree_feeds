@@ -11,9 +11,9 @@ module SpreeFeeds
       end
 
       def description
+        return '' unless @product.description.present?
         strip_tags(@product.description).gsub("\n", ' ').gsub("\r", '').squeeze(' ').strip
       end
-
     end
   end
 end
