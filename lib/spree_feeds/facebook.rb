@@ -5,10 +5,10 @@ module SpreeFeeds
 
     def perform
       tags = SpreeFeeds::Config.facebook_tags
-      file_path = "#{@base_path}/facebook.csv"
+      file_path = "#{@base_path}/facebook.tsv"
       tmp_name = "#{file_path}.tmp"
 
-      options = { col_sep: ',' }
+      options = { col_sep: '\t' }
       CSV.open(tmp_name, "w", options) do |csv|
         csv << tags
 
