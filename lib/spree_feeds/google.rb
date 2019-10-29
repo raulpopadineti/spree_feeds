@@ -34,6 +34,7 @@ module SpreeFeeds
           variants = product.variants.many? ? product.variants : [product.master]
           variants.each do |variant|
             helper = Helpers::GoogleShoppingFeed.new(variant, @root_url)
+            next if helper.description.blank?
             csv << tags.map do |tag|
               if helper.respond_to?(tag) && value = helper.public_send(tag)
                 value

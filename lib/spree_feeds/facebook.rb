@@ -14,6 +14,7 @@ module SpreeFeeds
 
         @products.each do |product|
           helper = Helpers::Facebook.new(product.master, @root_url)
+          next if helper.description.blank?
           csv << tags.map do |tag|
             if helper.respond_to?(tag) && value = helper.public_send(tag)
               value
